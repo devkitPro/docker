@@ -11,7 +11,8 @@ RUN apt-get update && \
 
 RUN wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb && \
     dpkg -i devkitpro-pacman.deb && \
-    rm devkitpro-pacman.deb
+    rm devkitpro-pacman.deb && \
+    dkp-pacman -Scc --noconfirm
 
 ENV DEVKITPRO=/opt/devkitpro
 ENV PATH=${DEVKITPRO}/tools/bin:$PATH
