@@ -4,5 +4,6 @@ MAINTAINER Dave Murphy <davem@devkitpro.org>
 
 RUN dkp-pacman -Syyu --noconfirm switch-dev && \
     dkp-pacman -S --needed --noconfirm `dkp-pacman -Slq dkp-libs | grep '^switch-'` && \
-    dkp-pacman -Scc --noconfirm
+    dkp-pacman -Scc --noconfirm && \
+    dkp-pacman -S --needed --noconfirm devkitpro-pkgbuild-helpers
 
