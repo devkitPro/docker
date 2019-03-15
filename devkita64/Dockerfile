@@ -7,3 +7,4 @@ RUN dkp-pacman -Syyu --noconfirm switch-dev && \
     dkp-pacman -Scc --noconfirm && \
     dkp-pacman -S --needed --noconfirm devkitpro-pkgbuild-helpers
 
+ENV PATH=$DEVKITPRO/devkitA64/bin:$PATH
