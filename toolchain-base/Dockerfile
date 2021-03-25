@@ -15,6 +15,7 @@ RUN apt-get update && \
 RUN wget https://github.com/devkitPro/pacman/releases/latest/download/devkitpro-pacman.amd64.deb && \
     gdebi -n devkitpro-pacman.amd64.deb && \
     rm devkitpro-pacman.amd64.deb && \
+    dkp-pacman -S --needed --noconfirm devkitpro-pkgbuild-helpers \
     dkp-pacman -Scc --noconfirm
 
 ENV DEVKITPRO=/opt/devkitpro
