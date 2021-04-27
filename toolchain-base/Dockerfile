@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 MAINTAINER Dave Murphy <davem@devkitpro.org>
 
