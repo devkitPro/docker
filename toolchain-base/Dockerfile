@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils && \
     apt-get install -y --no-install-recommends sudo ca-certificates pkg-config curl wget bzip2 xz-utils make git bsdtar doxygen gnupg && \
     apt-get install -y --no-install-recommends gdebi-core && \
-    apt-get install -y --no-install-recommends cmake && \
+    apt-get install -y --no-install-recommends cmake zip unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
