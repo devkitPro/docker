@@ -11,6 +11,7 @@ RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sou
     apt-get install -y --no-install-recommends git git-restore-mtime && \
     apt-get install -y --no-install-recommends cmake/buster-backports zip unzip && \
     apt-get install -y --no-install-recommends locales && \
+    apt-get install -y --no-install-recommends patch && \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8 && \
