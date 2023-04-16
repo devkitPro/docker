@@ -18,7 +18,8 @@ RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sou
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget https://apt.devkitpro.org/install-devkitpro-pacman && \
+RUN ln -s /proc/mounts /etc/mtab && \
+    wget https://apt.devkitpro.org/install-devkitpro-pacman && \
     chmod +x ./install-devkitpro-pacman && \
     ./install-devkitpro-pacman && \
     rm ./install-devkitpro-pacman && \
