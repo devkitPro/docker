@@ -9,6 +9,7 @@ RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sou
     apt-get install -y --no-install-recommends apt-utils && \
     apt-get install -y --no-install-recommends sudo ca-certificates pkg-config curl wget bzip2 xz-utils make bsdtar doxygen gnupg && \
     apt-get install -y --no-install-recommends git git-restore-mtime && \
+    apt-get install -y --no-install-recommends rsync && \
     apt-get install -y --no-install-recommends cmake/buster-backports zip unzip && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
