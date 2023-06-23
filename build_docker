@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+build_docker() {
+
+  tag=$(date +"%Y%m%d")
+  image="devkitpro/${1}"
+  pushd ${1}
+  docker buildx build --no-cache --platform linux/amd64,linux/arm64 -t ${image}:latest -t ${image}:${tag} --push .
+  popd
+}
+
+if [[ "$1" == "dka64" ]]; then
+  build_docker devkita64
+elif [[ "$1" == "dkarm" ]]; then
+  build_docker devkitarm
+elif [[ "$1" == "dkppc" ]]; then
+  build_docker devkitppc
+elif [[ "$1" == "base" ]]; then
+  build_docker toolchain-base
+else
+  echo -e "\e[31mUnknown docker, specify dkarm, dkppc, dka64 or base\e[0m"
+fi

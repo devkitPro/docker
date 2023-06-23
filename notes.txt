@@ -1,0 +1,18 @@
+prep for multi-arch docker images using multiple devices
+
+
+docker swarm init --advertise-addr <local ip>
+ above command shows command to join swarm, execute that on pi4
+
+docker buildx create --name dkbuilder --node dkbuilder --platform linux/amd64 \
+--driver-opt env.BUILDKIT_STEP_LOG_MAX_SIZE=10000000 \
+--driver-opt env.BUILDKIT_STEP_LOG_MAX_SPEED=10000000
+--driver-opt network=host
+
+docker buildx create --name dkbuilder --append  --node pi4 --platform linux/arm64 \
+--driver-opt env.BUILDKIT_STEP_LOG_MAX_SIZE=10000000 \
+--driver-opt env.BUILDKIT_STEP_LOG_MAX_SPEED=10000000 \
+--driver-opt network=host
+
+docker buildx use dkbuilder
+docker buildx inspect --bootstrap
