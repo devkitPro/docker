@@ -1,16 +1,15 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 MAINTAINER Dave Murphy <davem@devkitpro.org>
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/buster-backports.list && \
-    apt-get update && apt-get upgrade -y && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends apt-utils && \
-    apt-get install -y --no-install-recommends sudo ca-certificates pkg-config curl wget bzip2 xz-utils make bsdtar doxygen gnupg && \
+    apt-get install -y --no-install-recommends sudo ca-certificates pkg-config curl wget bzip2 xz-utils make libarchive-tools doxygen gnupg && \
     apt-get install -y --no-install-recommends git git-restore-mtime && \
     apt-get install -y --no-install-recommends rsync && \
-    apt-get install -y --no-install-recommends cmake/buster-backports zip unzip && \
+    apt-get install -y --no-install-recommends cmake zip unzip ninja-build && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
