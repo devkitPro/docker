@@ -1,6 +1,6 @@
 FROM devkitpro/toolchain-base
 
-MAINTAINER Dave Murphy <davem@devkitpro.org>
+LABEL maintainer="devkitPro developers support@devkitpro.org"
 
 RUN dkp-pacman -Syyu --noconfirm && \
     dkp-pacman -S --needed --noconfirm 3ds-dev nds-dev gp32-dev gba-dev gp2x-dev && \

@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-MAINTAINER Dave Murphy <davem@devkitpro.org>
+LABEL maintainer="devkitPro developers support@devkitpro.org"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

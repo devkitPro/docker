@@ -1,6 +1,6 @@
 FROM devkitpro/toolchain-base
 
-MAINTAINER Dave Murphy <davem@devkitpro.org>
+LABEL maintainer="devkitPro developers support@devkitpro.org"
 
 RUN dkp-pacman -Syyu --noconfirm gamecube-dev wii-dev wiiu-dev && \
     dkp-pacman -S --needed --noconfirm ppc-portlibs gamecube-portlibs wii-portlibs wiiu-portlibs && \
