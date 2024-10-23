@@ -10,7 +10,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends git git-restore-mtime && \
     apt-get install -y --no-install-recommends rsync && \
     apt-get install -y --no-install-recommends cmake zip unzip ninja-build && \
-    apt-get install -y --no-install-recommends python && \
+    apt-get install -y --no-install-recommends python3 python-is-python3 python3-lz4 && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -26,7 +26,7 @@ RUN ln -s /proc/mounts /etc/mtab && \
     rm ./install-devkitpro-pacman && \
     yes | dkp-pacman -Scc
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 ENV DEVKITPRO=/opt/devkitpro
 ENV PATH=${DEVKITPRO}/tools/bin:$PATH
