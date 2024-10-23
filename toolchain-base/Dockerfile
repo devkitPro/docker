@@ -24,7 +24,10 @@ RUN ln -s /proc/mounts /etc/mtab && \
     chmod +x ./install-devkitpro-pacman && \
     ./install-devkitpro-pacman && \
     rm ./install-devkitpro-pacman && \
+    dkp-pacman -Syyu --noconfirm && \
+    dkp-pacman -S --needed --noconfirm dkp-toolchain-vars dkp-meson-scripts && \
     yes | dkp-pacman -Scc
+
 
 ENV LANG=en_US.UTF-8
 
