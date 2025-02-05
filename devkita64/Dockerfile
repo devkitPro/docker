@@ -9,5 +9,4 @@ RUN dkp-pacman -Syyu --noconfirm && \
     dkp-pacman -S --needed --noconfirm dkp-toolchain-vars hactool && \
     yes | dkp-pacman -Scc
 
-ENV DEVKITARM=/opt/devkitpro/devkitARM
-
+ENV DEVKITARM=${DEVKITPRO}/devkitARM
