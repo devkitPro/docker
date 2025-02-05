@@ -8,4 +8,4 @@ RUN dkp-pacman -Syyu --noconfirm gamecube-dev wii-dev wiiu-dev && \
     yes | dkp-pacman -Scc
 
 ENV DEVKITPPC=${DEVKITPRO}/devkitPPC
-ENV DEVKITARM=/opt/devkitpro/devkitARM
+ENV DEVKITARM=${DEVKITPRO}/devkitARM
