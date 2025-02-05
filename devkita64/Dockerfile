@@ -10,3 +10,8 @@ RUN dkp-pacman -Syyu --noconfirm && \
     yes | dkp-pacman -Scc
 
 ENV DEVKITARM=${DEVKITPRO}/devkitARM
+
+RUN useradd -m devuser \
+    && echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER devuser
