@@ -13,11 +13,17 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends python3 python-is-python3 python3-lz4 && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
-    sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=en_US.UTF-8 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get -y autoremove --purge && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    echo -n "UTC" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get -y purge locales-all && \
+    dpkg-reconfigure -f noninteractive locales && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    echo "en_US.UTF-8 UTF-8" > /etc/default/locale && \
+    locale-gen en_US.UTF-8 && \
+    update-locale
 
 RUN ln -s /proc/mounts /etc/mtab && \
     wget https://apt.devkitpro.org/install-devkitpro-pacman && \
@@ -27,9 +33,6 @@ RUN ln -s /proc/mounts /etc/mtab && \
     dkp-pacman -Syyu --noconfirm && \
     dkp-pacman -S --needed --noconfirm dkp-toolchain-vars dkp-meson-scripts && \
     yes | dkp-pacman -Scc
-
-
-ENV LANG=en_US.UTF-8
 
 ENV DEVKITPRO=/opt/devkitpro
 ENV PATH=${DEVKITPRO}/tools/bin:$PATH
