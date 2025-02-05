@@ -9,3 +9,8 @@ RUN dkp-pacman -Syyu --noconfirm gamecube-dev wii-dev wiiu-dev && \
 
 ENV DEVKITPPC=${DEVKITPRO}/devkitPPC
 ENV DEVKITARM=${DEVKITPRO}/devkitARM
+
+RUN useradd -m devuser \
+    && echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER devuser
