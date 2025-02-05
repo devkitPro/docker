@@ -14,3 +14,6 @@ RUN useradd -m devuser \
     && echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 USER devuser
+
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["/bin/bash"]
