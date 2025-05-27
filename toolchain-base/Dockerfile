@@ -9,7 +9,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends sudo ca-certificates pkg-config curl wget bzip2 xz-utils make libarchive-tools doxygen gnupg && \
     apt-get install -y --no-install-recommends git git-restore-mtime && \
     apt-get install -y --no-install-recommends rsync && \
-    apt-get install -y --no-install-recommends cmake zip unzip ninja-build && \
+    apt-get install -y --no-install-recommends zip unzip ninja-build && \
     apt-get install -y --no-install-recommends python3 python-is-python3 python3-lz4 && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
@@ -18,6 +18,9 @@ RUN apt-get update && apt-get upgrade -y && \
     update-locale LANG=en_US.UTF-8 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list.d/bullseye-backports.list && \
+    apt update && \
+    apt-get install -y --no-install-recommends -t bullseye-backports cmake && \
 
 RUN ln -s /proc/mounts /etc/mtab && \
     wget https://apt.devkitpro.org/install-devkitpro-pacman && \
