@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 LABEL maintainer="devkitPro developers support@devkitpro.org"
 
@@ -13,9 +13,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends python3 python-is-python3 python3-lz4 && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
-    echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list.d/bullseye-backports.list && \
-    apt update && \
-    apt-get install -y --no-install-recommends -t bullseye-backports cmake && \
+    apt-get install -y --no-install-recommends cmake && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     echo -n "UTC" > /etc/timezone && \
     apt-get -y autoremove --purge && \
