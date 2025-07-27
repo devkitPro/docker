@@ -13,6 +13,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends python3 python-is-python3 python3-lz4 && \
     apt-get install -y --no-install-recommends locales && \
     apt-get install -y --no-install-recommends patch && \
+    apt-get install -y --no-install-recommends build-essential cppcheck && \
     echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list.d/bookworm-backports.list && \
     apt update && \
     apt-get install -y --no-install-recommends -t bookworm-backports cmake && \
